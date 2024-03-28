@@ -17,24 +17,21 @@ class _HomePageState extends State<HomePage> {
   int clicked = 0;
   List myData = [];
 
-  List<PlaceModel> placeList = [];
+  // List<PlaceModel> placeList = [];
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await loadJson();
-    });
     super.initState();
   }
 
-  loadJson() async {
-    String data = await rootBundle.loadString('assets/json/data.json');
+  // loadJson() async {
+  //   String data = await rootBundle.loadString('assets/json/data.json');
 
-    setState(() {
-      myData = json.decode(data);
-      placeList = myData.map((e) => PlaceModel.fromJson(e)).toList();
-      placeList = placeList;
-    });
-  }
+  //   setState(() {
+  //     myData = json.decode(data);
+  //     placeList = myData.map((e) => PlaceModel.fromJson(e)).toList();
+  //     placeList = placeList;
+  //   });
+  // }
 
   Widget categoryWidget(int index) {
     return Padding(
@@ -85,7 +82,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               SizedBox(
-                height: myHeight * 0.102,
+                height: myHeight * 0.15,
                 child: Padding(
                   padding: EdgeInsets.only(
                     top: myHeight * 0.05,
@@ -156,20 +153,25 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         height: myHeight * 0.05,
                         width: myWidth * 0.75,
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        padding:
+                            const EdgeInsets.only(top: 0, left: 10, right: 10),
                         decoration: BoxDecoration(
-                            color: const Color(0xffEDF1F2),
-                            borderRadius: BorderRadius.circular(10)),
+                          color: const Color(0xffEDF1F2),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         child: TextFormField(
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: 'Search destination',
-                                hintStyle: const TextStyle(color: Colors.grey),
-                                icon: Image.asset(
-                                  'assets/icons/5.png',
-                                  height: myHeight * 0.03,
-                                  color: const Color(0xffCED6D9),
-                                ))),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintStyle: const TextStyle(
+                              color: Colors.grey,
+                            ),
+                            icon: Image.asset(
+                              'assets/icons/5.png',
+                              height: myHeight * 0.03,
+                              color: const Color(0xffCED6D9),
+                            ),
+                          ),
+                        ),
                       ),
                       Container(
                         height: myHeight * 0.05,
@@ -202,7 +204,7 @@ class _HomePageState extends State<HomePage> {
                   right: myWidth * 0.06,
                 ),
                 child: SizedBox(
-                  height: myHeight * 0.05,
+                  height: myHeight * 0.06,
                   width: myWidth,
                   child: ListView.builder(
                     itemCount: category.length,
@@ -239,11 +241,11 @@ class _HomePageState extends State<HomePage> {
               ),
               Expanded(
                   child: ListView.builder(
-                itemCount: placeList.length,
+                itemCount: models.length,
                 itemBuilder: (context, index) {
                   return TravelItem(
                     index: index,
-                    item: placeList,
+                    item: models,
                   );
                 },
               ))

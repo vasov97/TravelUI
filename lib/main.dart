@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_ui/pages/home_page.dart';
+import 'package:travel_ui/pages/splash_page.dart';
 import 'package:travel_ui/widgets/nav_bar.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Travel Concept',
       debugShowCheckedModeBanner: false,
-      home: NavBar(),
+      home: SplashPage(),
     );
   }
 }

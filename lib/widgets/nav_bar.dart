@@ -34,7 +34,7 @@ class _NavBarState extends State<NavBar> {
             });
           },
           tabBorderRadius: 10,
-          gap: 8,
+          gap: 3,
           color: Colors.grey,
           activeColor: Colors.white,
           iconSize: 24,
